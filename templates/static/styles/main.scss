@@ -1,0 +1,286 @@
+@import 'reset';
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap');
+
+@mixin styling($title-font-size,
+                $title-font-color,
+                $title-font-weight,
+                $text-font-size,
+                $text-font-color,
+                $text-font-weight,
+                $button-width,
+                $button-height,
+                $button-font-size,
+                $button-border,
+                $button-logo-height,
+                $steps-height,
+                $steps-padding,
+                $content-columns-width,
+                $label-svg-size,) {
+    *, *::before, *::after {
+        box-sizing: border-box;
+      }
+
+    // your SCSS here, e.g.
+    .wrapper {
+        background-color:#90d1d7;
+        min-height: 100vh;
+        min-width: 100vw;
+        display: flex;
+
+        .content-wrapper {
+            display: flex;
+            flex-grow: 1;
+            align-self: center;
+            flex-direction: column;
+            align-items: center;
+
+            .footer {
+                
+                .logo-link {
+                    display: flex;
+                    align-items: flex-end;
+                    font-family:  'Open Sans', sans-serif;
+                    font-weight: 400;
+                    font-size: 19px;
+                    color: #444;
+                    transform: translateY(4px);
+                    text-decoration: none;
+                    .logo {
+                        width: 140px;
+                        height: auto;
+                        filter: brightness(0%) contrast(50%);
+                    }
+                }
+            }
+            .steps {
+                box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.4);
+                width: 75%;
+                height: $steps-height;
+                margin: auto;
+                margin-bottom: 30px;
+                padding: $steps-padding;
+                font-family: 'Open Sans', sans-serif;
+                background-color: #fafafa;
+                border: 3px solid #444;
+                border-radius: 8px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                &-step {
+                    display: flex;
+                    flex-direction: column;
+                    &-title {
+                        font-size: $title-font-size;
+                        font-weight: $title-font-weight;
+                        color:$title-font-color;
+                        line-height: $title-font-size*2;
+                        .check-logo {
+                            width: 20px;
+                            filter: invert(22%) sepia(90%) saturate(3326%) hue-rotate(114deg) brightness(89%) contrast(102%);
+                        }
+                    }
+                    &-content {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        
+                        &-text {
+                            width: $content-columns-width;
+                            font-size: $text-font-size;
+                            font-weight: $text-font-weight;
+                            color: $text-font-color;
+                            line-height: $text-font-size *1.5;
+                            
+                        }
+                        &-button {
+                            cursor: pointer;
+                            align-self: center;
+                            width: $button-width;
+                            height: $button-height + $button-border*2; 
+                            // margin: auto;
+                            // text-align: center;
+                            font-size: $button-font-size;
+                            font-weight: $text-font-weight;
+                            color: $text-font-color;
+                            text-decoration: inherit;
+                            background-color: inherit;
+                            border: $button-border solid #000;
+                            border-radius: 6px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            &-text {
+                                // margin: auto;
+                                // line-height: 45px;
+                             
+                            }
+                            .button-logo {
+                                height: $button-logo-height;
+                                margin-right: 10px;
+                            }
+                            &:hover {
+                                transform: translateY(-2px);
+                                border-bottom: 3px solid #000;
+                              }
+                        }
+                        .special-button {
+                            background-color:#00b0aa;
+                            border: $button-border solid #000;
+                            color: #fff;
+                            &:hover {
+                                transform: translateY(-2px);
+                                border-bottom: 3px solid #000;
+                              }
+                        }
+                    }
+                }
+            }
+
+
+        }
+        .link {
+            color: #5885c3;
+        }
+        
+        #uploadform {
+            display: flex;
+            align-items: flex-end;
+        }
+        .file-input__input {
+            width: 0.1px;
+            height: 0.1px;
+            opacity: 0;
+            overflow: hidden;
+            position: absolute;
+            z-index: -1;
+        }
+        .file-input__label {
+            cursor: pointer;
+            font-size: $text-font-size ;
+            display: inline-flex;
+            align-items: flex-start;
+            font-weight: 700;
+            color: #444;
+            margin-right: 15px;
+            &:hover {
+                color: #7da0d0;
+            }
+          }
+          
+          .file-input__label svg {
+            height: $label-svg-size;
+            margin-right: 4px;
+          }
+
+          .file-placeholder{
+            background-color: inherit;
+            border: none;
+            font-size: 12px;
+        }
+
+        input.upload-file {
+            cursor: pointer;        /* make the cursor like hovering over an <a> element */
+            background-color:#00b0aa; /* make the button transparent */
+            border: $button-border solid #00b0aa;
+            border-radius: 6px;
+            color: #fafafa;
+            margin-left: -10px;
+            font-size: $text-font-size -9;
+            &:hover {
+                transform: translateY(-1px);
+                border-bottom: 2px solid #00948f;
+              }
+        }
+    }    
+}
+// @media screen and (max-width: 850px) {
+//     @include styling(
+//         $display: 'block',
+//         // Titles parametrers
+//         $title-font-size: 25px,
+//         $title-font-color: black,
+//         $title-font-weight: 700,
+
+//         // Texts parametrers
+//         $text-font-size: 14px,
+//         $text-font-color: #000,
+//         $text-font-weight: 600,
+
+//         //Buttons parameters
+//         $button-width: 260px,
+//         $button-height: 42px,
+//         $button-font-size: 15px,
+//         $button-border: 2px,
+
+//         //Size parameters
+//         $steps-height: 550px,
+//         $steps-padding: 50px,
+//         $content-columns-width: 55%,
+//     );
+// }
+@media screen and (max-width: 1400px) {
+    @include styling(
+        // Titles parametrers
+        $title-font-size: 22px,
+        $title-font-color: black,
+        $title-font-weight: 700,
+
+        // Texts parametrers
+        $text-font-size: 13px,
+        $text-font-color: #000,
+        $text-font-weight: 400,
+
+        //Buttons parameters
+        $button-width: 260px,
+        $button-height: 41px,
+        $button-font-size: 14px,
+        $button-border: 2px,
+        $button-logo-height: 17px,
+
+        // Others
+        $label-svg-size: 13px,
+
+        //Size parameters
+        $steps-height: 500px,
+        $steps-padding: 40px 50px,
+        $content-columns-width: 55%,
+    );
+}
+
+
+@media screen and (min-width: 1401px) {
+    @include styling(
+        // Titles parametrers
+        $title-font-size: 31px,
+        $title-font-color: black,
+        $title-font-weight: 700,
+
+        // Texts parametrers
+        $text-font-size: 14px,
+        $text-font-color: #000,
+        $text-font-weight: 600,
+
+        //Buttons parameters
+        $button-width: 300px,
+        $button-height: 45px,
+        $button-font-size: 17px,
+        $button-border: 2px,
+        $button-logo-height: 18px,
+
+        // Others
+        $label-svg-size: 16px,
+
+        //Wrapper parameters
+        $steps-height: 700px,
+        $steps-padding: 100px,
+        $content-columns-width: 60%,
+    );
+}
+
+// TODO:
+// agregar un check para el estado uploaded
+// descargar csv con informe final despues de la corrida: (Si se encontró el contacto en whatsapp o no)
+// agregar links inline
+// agregar barras de carga para run y para upload
+// agregar un check y una x para los estados autorizado y revocado
+// cuando se abre desde un celular inhabilitar los botones
